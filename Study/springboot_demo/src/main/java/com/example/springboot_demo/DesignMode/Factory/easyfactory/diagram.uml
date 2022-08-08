@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="-377.0" y="-80.33333333333331">com.example.springboot_demo.DesignMode.Factory.easyfactory.Dog</node>
+    <node x="-609.6666666666666" y="-80.33333333333331">com.example.springboot_demo.DesignMode.Factory.easyfactory.Cat</node>
+    <node x="-498.66666666666663" y="-218.00000000000003">com.example.springboot_demo.DesignMode.Factory.easyfactory.Animal</node>
+    <node x="-544.6666666666667" y="51.0">com.example.springboot_demo.DesignMode.Factory.easyfactory.AnimalFactory</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.example.springboot_demo.DesignMode.Factory.easyfactory.AnimalFactory" target="com.example.springboot_demo.DesignMode.Factory.easyfactory.Dog" relationship="GENERALIZATION">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.example.springboot_demo.DesignMode.Factory.easyfactory.Cat" target="com.example.springboot_demo.DesignMode.Factory.easyfactory.Animal" relationship="REALIZATION">
+      <point x="-0.0" y="-38.5" />
+      <point x="-556.6666666666666" y="-179.50000000000003" />
+      <point x="-53.0" y="-0.0" />
+    </edge>
+    <edge source="com.example.springboot_demo.DesignMode.Factory.easyfactory.Dog" target="com.example.springboot_demo.DesignMode.Factory.easyfactory.Animal" relationship="REALIZATION">
+      <point x="-0.0" y="-38.5" />
+      <point x="-324.0" y="-179.50000000000003" />
+      <point x="53.0" y="-0.0" />
+    </edge>
+  </edges>
+  <settings layout="分层" zoom="1.5" showDependencies="false" x="-300.50000000000006" y="-65.33333333333334" />
+  <SelectedNodes />
+  <Categories>
+    <Category>方法</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

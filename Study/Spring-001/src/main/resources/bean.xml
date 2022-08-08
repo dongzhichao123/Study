@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.*"></context:component-scan>
+    <bean id="datasource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/demo01?serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="Gepoint"/>
+    </bean>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="datasource"/>
+        <!--typeAliases-->
+<!--        <property name="typeAliasesPackage" value="com.mybatis"/>-->
+        <!--mybatis.xml-->
+        <property name="mapperLocations" value="classpath:Mybatis.xml"/>
+    </bean>
+    <!--MapperScannerConfigurer-->
+    <!--根据某一个包目录，去扫描Mybatis的接口-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.mybatis"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+
+    <!--外部注入-->
+    <!--  <bean id="book" class="com.dzc.Book">
+          <property name="name" value="第一本书"></property>
+          <property name="price" value="10"></property>
+      </bean>
+      <bean id="person" class="com.dzc.Person">
+          <property name="name" value="董智超"></property>
+          <property name="age" value="15"></property>
+          <property name="book" ref="book"></property>
+       </bean>-->
+    <!--内部注入-->
+    <!--    <bean id="person" class="com.dzc.Person">-->
+    <!--        <property name="name" value="董智超"></property>-->
+    <!--        <property name="age" value="33"></property>-->
+    <!--        <property name="book">-->
+    <!--            <bean id="book" class="com.dzc.Book">-->
+    <!--                <property name="name" value="第一本书"></property>-->
+    <!--                <property name="price" value="10"></property>-->
+    <!--            </bean>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+    <!--    <bean id="orders" class="com.bean.Orders" init-method="initMethod">-->
+    <!--        <property name="name" value="电脑"></property>-->
+    <!--    </bean>-->
+</beans>

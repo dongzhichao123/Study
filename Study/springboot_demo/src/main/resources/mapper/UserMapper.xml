@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot_demo.MybatisXml.UserXmlMapper">
+    <resultMap id="user-result" type="com.example.springboot_demo.Mybatis.entity.User">
+        <id column="id" property="id" jdbcType="INTEGER"></id>
+        <result column="name" property="name" jdbcType="VARCHAR"></result>
+        <result column="age" property="age" jdbcType="INTEGER"></result>
+        <association property="payment" javaType="com.example.springboot_demo.Mybatis.entity.Payment">
+            <id column="id" property="id" jdbcType="INTEGER"></id>
+            <result column="serial" property="serial" jdbcType="INTEGER"></result>
+        </association>
+
+    </resultMap>
+
+    <select id="selectAll" resultMap="user-result">
+        select *
+        from user
+    </select>
+
+    <insert id="addUser" parameterType="com.example.springboot_demo.Mybatis.entity.User">
+        insert into user(name, age)
+        values (#{name}, #{age})
+    </insert>
+
+    <select id="selectByName"  resultMap="user-result">
+        select *
+        from user,payment
+        where user.name = #{username} and payment.id=user.id
+    </select>
+
+    <update id="updaterUser" parameterType="com.example.springboot_demo.Mybatis.entity.User">
+        update user
+        set name=#{name},
+            age=#{age}
+        where id = #{id}
+    </update>
+    <delete id="deleteUser">
+        delete
+        from user
+        where id = #{id}
+    </delete>
+
+</mapper>
